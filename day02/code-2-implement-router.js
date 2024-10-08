@@ -37,4 +37,4 @@ http.createServer((req, res) => {
         notfound(req, res); //notfound 대한 함수 실행
     }
 
-}).listen("3000", () => console.log("OK 라우터 서버!"));
+}).listen("3000", () => console.log("OK 라우터 서버!"));  
