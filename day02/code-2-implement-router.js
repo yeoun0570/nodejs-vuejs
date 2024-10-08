@@ -3,7 +3,9 @@ const url = require("url"); //url 모듈로딩, 추후에 프로젝트에선 백
 
 
 const user = (req, res) => {
-    res.end("[user] name : yeoun, company : ssg"); //user에 대한 결과값 설정
+    //path명을 할당. 즉, 경로할당
+    const userInfo = url.parse(req.url, true).query; //쿼리 스트링 데이터를 userInfo에 할당
+    res.end(`[user] name : ${userInfo.name}, company : ${userInfo.company}`); //user에 대한 결과값 설정
 };
 
 const feed = (req, res) => {
