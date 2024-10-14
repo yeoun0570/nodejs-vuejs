@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+</head>
+<body>
+
+    <!-- 스크립트 태그로 뷰 라이브러리를 불러옴(서버에 직접 요청하는 방식), 뷰 라이브러리를 불러오면 Vue객체를 사용할 수 있다. -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        [v-cloak] {
+            display : none;
+        }
+    </style>
+
+    <div id="app">
+        <h1 v-cloack>{{ message }}</h1>
+
+    </div>
+
+    <script>
+        const {createApp} = Vue;// Vue 객체에서 createApp() 메서드를 비구조화 할당으로 추출하여 사용
+        //비구조화 할당(구조분해할당) : 배열이나 객체, 속성을 개별 변수에 담을 수 있는 자바스크립트 표현식
+        //구조화 할당 : 
+
+        window.setTimeout(() => {
+            createApp(//위에서 할당한 호출함수 = 애플리케이션 인스턴스 생성
+                {
+                    data(){//data라는 속성이 정의된 객체를 매개변수로 전달하겠다~
+                            //data 속성은 값으로 객체를 반환하는 함수이며(함수 형태로 이루어져있다~), 함수에 반환되는 객체는 뷰 인스턴스에서 데이터(data)로 사용하였다.
+                        return{
+                            message : "Hello Vue.js!",
+                        } 
+                    },
+
+                }
+
+
+            ).mount("#app");}, 2000);//뷰라이브러리에서 제공하는 mount 함수를 이용하여, 연결할 DOM의 id 속성값인 app을 매개변수로 전달하여 위의 div영역과 바인딩
+            //즉 뷰 인스턴스에서 생성한 함수를 웹브라우저에서 확인 가능한 것이다.
+    </script>
+</body>
+</html>

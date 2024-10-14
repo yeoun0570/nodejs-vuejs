@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        {{message}}
+    </div>
+    <script>
+        // Vue 객체의 속성 중에서 createApp() 함수를 비구조화 할당으로 변수에 할당함
+        // 비구조화 할당(구조 분해 할당)이란? 배열이나 객체 속성을 개별 변수에 값을 담을 수 있는 자바스크립트 표현식
+        const {createApp} = Vue;
+        createApp(  // 애플리케이션 인스턴스 생성
+            {
+                data(){     // data 속성이 정의된 객체를 매개변수로 전달한다.
+                            // data 속성은 값으로 객체를 반환하는 함수이며, 함수에 반환되는 객체는 뷰 인스턴스에서 데이터(data)로 사용하였다.
+                    return{
+                        message : "Hello Vue.js!",
+                    };
+                },
+            }
+        ).mount("#app");
+    </script>
+</body>
+</html>
