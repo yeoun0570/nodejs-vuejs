@@ -1,26 +1,33 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ThirdChild from "./components/ThirdChild.vue";
+import {message, reversedMessage } from '@/keys.js';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    ThirdChild,
+  },
+
+  provide() {
+    return {
+      [message]: this.message,
+      [reversedMessage]: this.reversedMessage,
+    }
+  },
+
+  data() {
+    return {
+      message: 'Hello ThirdChild Component!',
+    }
+  },
+
+  computed: {
+    reversedMessage() {
+      return this.message.split('').reverse().join('');
+    },
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<template>
+  <ThirdChild/>
+</template>
