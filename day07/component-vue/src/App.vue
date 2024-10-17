@@ -1,29 +1,35 @@
 <script>
-import BasicScope from '@/components/BasicScope.vue';
-import BasicScope2 from '@/components/BasicScope2.vue';
+import ProductList from "@/components/ProductList.vue";
+import ProductDetail from "./components/ProductDetail.vue";
+
 export default {
   components: {
-    BasicScope,
-    BasicScope2,
+    ProductList,
+    ProductDetail,
   },
+
   data() {
     return {
-      message: 'parent',
-      count: 0,
-    };
+      selectedProduct : null,
+      visible: false,
+    }
   },
+
+  methods: {
+    handleSelectProduct(product) {
+      this.selectedProduct = product;
+    },
+  },
+
+
 };
 </script>
+
 <template>
-  <BasicScope2>
-    <h1>범위: {{ message }} / {{ count }}</h1>
-  </BasicScope2>
-  <BasicScope v-slot="slotProps">
-    <h1>{{ slotProps.message }} / {{ slotProps.count }}</h1>
-  </BasicScope>
+  <ProductList @select-product="handleSelectProduct"/>
+
+
+
+  <ProductDetail :product="selectedProduct"/>
+
 </template>
-<style scoped>
-h1 {
-  color: blue;
-}
-</style>
