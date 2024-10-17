@@ -1,35 +1,33 @@
 <script>
-import ProductList from "@/components/ProductList.vue";
-import ProductDetail from "./components/ProductDetail.vue";
+import DynamicLayout from './components/DynamicLayout.vue';
 
 export default {
   components: {
-    ProductList,
-    ProductDetail,
+    DynamicLayout,
   },
 
   data() {
     return {
-      selectedProduct : null,
-      visible: false,
-    }
+      activeSlot: "header", // 초기 슬롯 설정
+    };
   },
-
-  methods: {
-    handleSelectProduct(product) {
-      this.selectedProduct = product;
-    },
-  },
-
-
 };
 </script>
 
 <template>
-  <ProductList @select-product="handleSelectProduct"/>
+  <DynamicLayout :currentSlot="activeSlot">
+    <template v-slot:header>
+      <h1>헤더 내용</h1>
+    </template>
+    <template v-slot:content>
+      <p>콘텐츠 내용</p>
+    </template>
+    <template v-slot:footer>
+      <p>푸터 내용</p>
+    </template>
+  </DynamicLayout>
 
-
-
-  <ProductDetail :product="selectedProduct"/>
-
+  <button @click="activeSlot = 'header'">헤더로 변경</button>
+  <button @click="activeSlot = 'content'">콘텐츠로 변경</button>
+  <button @click="activeSlot = 'footer'">푸터로 변경</button>
 </template>
