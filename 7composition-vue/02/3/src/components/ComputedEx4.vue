@@ -20,18 +20,19 @@ const reactiveDoubleCount = computed({
   },
 
   set(newValue) {
-    reactiveDoubleCount.count = newValue;
+    reactiveCount.count = newValue;
   },
 });
 
-setTimeout(() => {
-  reactiveCount.value = 20;
-  reactiveDoubleCount.count = 20;
-}, 2000);
-
-
 console.log(refDoubleCount.value);
 console.log(reactiveDoubleCount.value);
+
+setTimeout(() => {
+  refDoubleCount.value = 20;
+  reactiveDoubleCount.value = 20;
+  console.log(refDoubleCount.value);
+  console.log(reactiveDoubleCount.value);
+}, 2000);
 </script>
 
 <template>
