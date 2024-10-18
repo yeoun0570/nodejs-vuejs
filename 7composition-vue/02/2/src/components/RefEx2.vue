@@ -6,8 +6,8 @@ const componentRef = ref(null);
 
 setTimeout(
   () => {
-    console.log(componentRef.value.number);
-    console.log(componentRef.value.doubleNum);
+    console.log(componentRef.value.number + 2);
+    console.log(componentRef.value.doubleNum * 2);
   }, 2000
 );
 
