@@ -1,16 +1,27 @@
 <script>
 export default {
-    
+    props: {
+      todo: {
+        type: Object,
+        default() {
+          return null;
+        }
+      },
+    },
+
+    data() {
+      
+    },
 }
 </script>
 
 <template>
   <div class="todo__list">
     <!-- 할 일 목록이 있을 때 (완료 시 .todo__item--completed 클래스 추가 )-->
-    <div class="todo__item">
-      <input type="checkbox" id="chk" />
+    <div class="todo__item" v-for="(todo,index) in todo" :key="index">
+      <input type="checkbox" id="chk"/>
       <label for="chk" class="todo__checkbox-label"></label>
-      <span class="todo__item-text">아침먹기</span>
+      <span class="todo__item-text">{{ todo.inputMessage }}</span>
       <span class="material-symbols-outlined todo__delete-icon"> delete </span>
     </div>
 

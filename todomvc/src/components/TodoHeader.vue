@@ -31,7 +31,7 @@ export default {
       </li>
 
       <li
-        :class="{ 'todo__tab--active-red' :currentData === 'completed' }"
+        :class="{ 'todo__tab--active' :currentData === 'completed' }"
         @click="updateTab('completed')"
       >
         완료

@@ -40,7 +40,7 @@ export default {
     <!-- 정의한 currentData 데이터를 TodoHeader 컴포넌트에 전달 -->
     <TodoHeader :currentData="currentData" @update-tab="updateTab"> </TodoHeader>
 
-    <TodoList> </TodoList>
+    <TodoList :todo="todo"> </TodoList>
 
     <TodoInput @add-todo="addTodo"> </TodoInput>
   </div>
