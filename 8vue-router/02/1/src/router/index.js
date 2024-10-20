@@ -1,5 +1,6 @@
 import { createRouter,createWebHistory } from "vue-router";
 import UserView from "@/views/UserView.vue";
+import UserInfo from "@/views/UserInfo.vue";
 
 const router = createRouter(
     {
@@ -11,6 +12,11 @@ const router = createRouter(
                 name:'user',
                 component: UserView,
             },
+            {
+                path:'/user/:userId/post/:postId',
+                name: 'user-post',
+                component: UserInfo,
+            }
         ],
     }
 );
